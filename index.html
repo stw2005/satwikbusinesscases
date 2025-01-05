@@ -7,9 +7,7 @@
     <title>Business Cases and SDGs</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <!-- External CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,26 +17,25 @@
         <h1>Business Cases and SDGs</h1>
     </header>
 
-    <div class="container">
-        <!-- Section: Customer Data and Preferences -->
+    <main class="container">
+        <!-- Customer Data Section -->
         <section class="section">
             <h2>Customer Data and Preferences</h2>
             <div class="sdg">
                 <strong>SDG 4: Quality Education</strong>
-                <p><strong>Target (based on SDG):</strong> Ensure equal access to affordable vocational education and skills development.</p>
+                <p><strong>Target:</strong> Ensure equal access to affordable vocational education and skills development.</p>
                 <p><strong>Indicator:</strong> Participation rate in formal and informal skills training.</p>
             </div>
             <div class="sdg">
                 <strong>SDG 12: Responsible Consumption and Production</strong>
-                <p><strong>Target (based on SDG):</strong> Encourage companies to adopt sustainable practices.</p>
+                <p><strong>Target:</strong> Encourage companies to adopt sustainable practices.</p>
                 <p><strong>Indicator:</strong> Number of companies publishing sustainability reports.</p>
             </div>
             <h3>Algorithm: Quick Sort Algorithm</h3>
-            <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
-            <p><strong>Design Structures:</strong></p>
+            <p><strong>Design Techniques and Principles:</strong></p>
             <ul>
-                <li><strong>Pivot Selection:</strong> Organizes data efficiently.</li>
-                <li><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</li>
+                <li><strong>Divide and Conquer:</strong> Divides the array into subarrays for efficient sorting.</li>
+                <li><strong>In-place Sorting:</strong> Operates within the input array, minimizing memory usage.</li>
             </ul>
             <pre class="code-block">
 #include &lt;iostream&gt;
@@ -78,35 +75,190 @@ int main() {
     int arr[] = {10, 7, 8, 9, 1, 5};
     int n = sizeof(arr) / sizeof(arr[0]);
     quickSort(arr, 0, n - 1);
-    cout &lt;&lt; "Sorted array: &lt;br&gt;";
+    cout &lt;&lt; "Sorted array: ";
     printArray(arr, n);
     return 0;
 }
             </pre>
         </section>
 
-        <!-- Add additional sections (Kruskal, Dijkstra, etc.) -->
+        <!-- Supply Chain Section -->
+        <section class="section">
+            <h2>Supply Chain and Vendor Network</h2>
+            <div class="sdg">
+                <strong>SDG 8: Decent Work and Economic Growth</strong>
+                <p><strong>Target:</strong> Achieve higher levels of economic productivity through diversification.</p>
+                <p><strong>Indicator:</strong> Annual growth rate of real GDP per employed person.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 2: Zero Hunger</strong>
+                <p><strong>Target:</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
+                <p><strong>Indicator:</strong> Proportion of agricultural area under sustainable practices.</p>
+            </div>
+            <h3>Algorithm: Kruskal's Algorithm</h3>
+            <p><strong>Design Techniques and Principles:</strong></p>
+            <ul>
+                <li><strong>Greedy Algorithm:</strong> Always picks the next smallest edge to minimize cost.</li>
+                <li><strong>Union-Find Data Structure:</strong> Ensures no cycles are formed in the graph.</li>
+            </ul>
+            <pre class="code-block">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;tuple&gt;
+#include &lt;algorithm&gt;
+using namespace std;
 
-        <!-- Download and Course Evaluation Buttons -->
-        <div class="buttons">
-            <button class="btn" id="download-btn">Download Code Zip</button>
-            <button class="btn" id="evaluation-sheet-btn">Course Project Evaluation Sheet</button>
-        </div>
-    </div>
+class DisjointSet {
+public:
+    vector&lt;int&gt; parent, rank;
+
+    DisjointSet(int n) {
+        parent.resize(n);
+        rank.resize(n, 0);
+        for (int i = 0; i &lt; n; ++i) {
+            parent[i] = i;
+        }
+    }
+
+    int find(int u) {
+        if (u != parent[u]) {
+            parent[u] = find(parent[u]);
+        }
+        return parent[u];
+    }
+
+    void unionSets(int u, int v) {
+        int rootU = find(u);
+        int rootV = find(v);
+        if (rootU != rootV) {
+            if (rank[rootU] &lt; rank[rootV]) {
+                parent[rootU] = rootV;
+            } else if (rank[rootU] &gt; rank[rootV]) {
+                parent[rootV] = rootU;
+            } else {
+                parent[rootV] = rootU;
+                ++rank[rootU];
+            }
+        }
+    }
+};
+
+void kruskal(int vertices, vector&lt;tuple&lt;int, int, int&gt;&gt; &amp;edges) {
+    sort(edges.begin(), edges.end());
+    DisjointSet ds(vertices);
+    int cost = 0;
+
+    for (auto &[weight, u, v] : edges) {
+        if (ds.find(u) != ds.find(v)) {
+            ds.unionSets(u, v);
+            cost += weight;
+            cout &lt;&lt; "Edge: " &lt;&lt; u &lt;&lt; " - " &lt;&lt; v &lt;&lt; " with cost: " &lt;&lt; weight &lt;&lt; endl;
+        }
+    }
+
+    cout &lt;&lt; "Total cost of the minimum spanning tree: " &lt;&lt; cost &lt;&lt; endl;
+}
+
+int main() {
+    vector&lt;tuple&lt;int, int, int&gt;&gt; edges = {
+        {10, 0, 1},
+        {15, 0, 2},
+        {20, 1, 2},
+        {25, 2, 3},
+        {30, 3, 4}
+    };
+
+    int vertices = 5; 
+    kruskal(vertices, edges);
+
+    return 0;
+}
+            </pre>
+        </section>
+
+        <!-- Transportation Section -->
+        <section class="section">
+            <h2>Transportation and Logistics</h2>
+            <div class="sdg">
+                <strong>SDG 9: Industry, Innovation, and Infrastructure</strong>
+                <p><strong>Target:</strong> Develop sustainable and resilient infrastructure.</p>
+                <p><strong>Indicator:</strong> Passenger and freight volumes by mode of transport.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 12: Responsible Consumption and Production</strong>
+                <p><strong>Target:</strong> Halve per capita global food waste at the retail and consumer levels.</p>
+                <p><strong>Indicator:</strong> Food loss index and food waste index.</p>
+            </div>
+            <h3>Algorithm: Dijkstra's Algorithm</h3>
+            <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
+            <p><strong>Design Techniques and Principles:</strong></p>
+            <ul>
+                <li><strong>Greedy Algorithm:</strong> Chooses the next shortest path in a weighted graph.</li>
+                <li><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of raw materials or products between suppliers and restaurants.</li>
+            </ul>
+            <pre class="code-block">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
+using namespace std;
+
+void dijkstra(int nodes, vector&lt;pair&lt;int, int&gt;&gt; adj[], int start) {
+    vector&lt;int&gt; dist(nodes, INT_MAX);
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;
+
+    dist[start] = 0;
+    pq.push({0, start});
+
+    while (!pq.empty()) {
+        int current_dist = pq.top().first;
+        int current_node = pq.top().second;
+        pq.pop();
+
+        for (auto neighbor : adj[current_node]) {
+            int next_node = neighbor.first;
+            int weight = neighbor.second;
+
+            if (current_dist + weight &lt; dist[next_node]) {
+                dist[next_node] = current_dist + weight;
+                pq.push({dist[next_node], next_node});
+            }
+        }
+    }
+
+    cout &lt;&lt; "Shortest distances from source " &lt;&lt; start &lt;&lt; ":\n";
+    for (int i = 0; i &lt; nodes; ++i) {
+        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " : " &lt;&lt; dist[i] &lt;&lt; endl;
+    }
+}
+
+int main() {
+    int nodes = 5;
+    vector&lt;pair&lt;int, int&gt;&gt; adj[nodes];
+
+    adj[0].push_back({1, 10});
+    adj[0].push_back({2, 20});
+    adj[1].push_back({0, 10});
+    adj[2].push_back({1, 30});
+    dijkstra(nodes, adj, 0);
+
+    return 0;
+}
+            </pre>
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="buttons">
+            <button onclick="downloadZip()">Download ZIP File</button>
+            <button onclick="window.location.href='#';">Course Project Evaluation Sheet</button>
+        </section>
+    </main>
 
     <script>
-        // JavaScript to handle the button functionality
-        document.getElementById('download-btn').addEventListener('click', function () {
-            window.location.href = 'path-to-zip-file.zip';
-        });
-
-        document.getElementById('evaluation-sheet-btn').addEventListener('click', function () {
-            window.location.href = 'path-to-evaluation-sheet.pdf';
-        });
+        function downloadZip() {
+            alert('ZIP file download functionality coming soon!');
+        }
     </script>
-
 </body>
 
 </html>
-
-
