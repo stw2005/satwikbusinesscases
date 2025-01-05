@@ -1,257 +1,270 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
-    
 <head>
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./niteensinghbuisnesscase.css">
-    <title>SDG Mapping and Business Algorithms</title>
+    <title>Business Cases and SDGs</title>
     <style>
-    s    body {
+        body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         h1, h2 {
             color: #333;
         }
-
-        h1 {
-            text-align: center;
+        code {
+            display: block;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .section {
             margin-bottom: 30px;
         }
-
-        .section {
-            background: #fff;
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            margin-top: 0;
-        }
-
-        .section code {
-            display: block;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
+        .sdg {
             margin: 10px 0;
-            overflow-x: auto;
-            border-radius: 5px;
         }
-
-        .section ul {
-            margin: 10px 0;
-            padding: 0 20px;
-        }
-
-        .section ul li {
-            margin: 5px 0;
+        .sdg strong {
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
-    <h1>SDG Mapping and Business Algorithms</h1>
 
+<header>
+    <h1>Business Cases and SDGs</h1>
+</header>
+
+<div class="container">
+
+    <!-- Business Case 1 -->
     <div class="section">
-        <h2>Transportation and Logistics</h2>
-        <p><strong>SDG 9:</strong> Industry, Innovation, and Infrastructure</p>
-        <p><strong>Target 9.1:</strong> Develop sustainable and resilient infrastructure.</p>
-        <p><strong>Indicator 9.1.2:</strong> Passenger and freight volumes by mode of transport.</p>
-        <p><strong>SDG 12:</strong> Responsible Consumption and Production</p>
-        <p><strong>Target 12.3:</strong> Halve per capita global food waste at the retail and consumer levels.</p>
-        <p><strong>Indicator 12.3.1:</strong> Food loss index and food waste index.</p>
+        <h2>Business Case 1: Customer Data and Preferences</h2>
+        <p>This project focuses on analyzing customer data to improve business decisions using the Quick Sort algorithm. It efficiently sorts customer information like preferences, feedback, and purchase history, enabling businesses to tailor their offerings to customer needs.</p>
 
-        <p><strong>Algorithm:</strong> Dijkstra's Algorithm</p>
-        <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
+        <div class="sdg">
+            <strong>SDG 4: Quality Education</strong>
+            <p><strong>Target 4.3:</strong> Ensure equal access to affordable vocational education and skills development.</p>
+            <p><strong>Indicator 4.3.1:</strong> Participation rate in formal and informal skills training.</p>
+        </div>
 
-        <ul>
-            <li><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</li>
-            <li><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of raw materials or products between suppliers and restaurants.</li>
-        </ul>
+        <div class="sdg">
+            <strong>SDG 12: Responsible Consumption and Production</strong>
+            <p><strong>Target 12.6:</strong> Encourage companies to adopt sustainable practices.</p>
+            <p><strong>Indicator 12.6.1:</strong> Number of companies publishing sustainability reports.</p>
+        </div>
+
+        <h3>Algorithm: Quick Sort Algorithm</h3>
+        <p>Used to sort customer data for better decision-making.</p>
+        <p><strong>Pivot Selection:</strong> Organizes data efficiently.</p>
+        <p><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</p>
 
         <code>
-#include &lt;iostream&gt;<br>
-#include &lt;vector&gt;<br>
-#include &lt;queue&gt;<br>
-#include &lt;climits&gt;<br>
-using namespace std;<br>
-<br>
-void dijkstra(int nodes, vector&lt;pair&lt;int, int&gt;&gt; adj[], int start) {<br>
-    vector&lt;int&gt; dist(nodes, INT_MAX);<br>
-    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;<br>
-<br>
-    dist[start] = 0;<br>
-    pq.push({0, start});<br>
-<br>
-    while (!pq.empty()) {<br>
-        int current_dist = pq.top().first;<br>
-        int current_node = pq.top().second;<br>
-        pq.pop();<br>
-<br>
-        for (auto neighbor : adj[current_node]) {<br>
-            int next_node = neighbor.first;<br>
-            int weight = neighbor.second;<br>
-<br>
-            if (current_dist + weight < dist[next_node]) {<br>
-                dist[next_node] = current_dist + weight;<br>
-                pq.push({dist[next_node], next_node});<br>
-            }<br>
-        }<br>
-    }<br>
-<br>
-    cout &lt;&lt; "Shortest distances from source " &lt;&lt; start &lt;&lt; ":\n";<br>
-    for (int i = 0; i < nodes; ++i) {<br>
-        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " : " &lt;&lt; dist[i] &lt;&lt; endl;<br>
-    }<br>
+#include <iostream>
+using namespace std;
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    quickSort(arr, 0, n - 1);
+    cout << "Sorted array: \n";
+    printArray(arr, n);
+    return 0;
 }
         </code>
     </div>
 
+    <!-- Business Case 2 -->
     <div class="section">
-        <h2>Supply Chain and Vendor Network</h2>
-        <p><strong>SDG 8:</strong> Decent Work and Economic Growth</p>
-        <p><strong>Target 8.2:</strong> Achieve higher levels of economic productivity through diversification.</p>
-        <p><strong>Indicator 8.2.1:</strong> Annual growth rate of real GDP per employed person.</p>
-        <p><strong>SDG 2:</strong> Zero Hunger</p>
-        <p><strong>Target 2.4:</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
-        <p><strong>Indicator 2.4.1:</strong> Proportion of agricultural area under sustainable practices.</p>
+        <h2>Business Case 2: Supply Chain and Vendor Network</h2>
+        <p>This project focuses on optimizing the vendor-supplier network using Kruskal's Algorithm to minimize transportation costs. By forming a minimum spanning tree, the algorithm connects suppliers and restaurants using minimal resources, ensuring no redundant connections and avoiding cycles.</p>
 
-        <p><strong>Algorithm:</strong> Kruskal's Algorithm</p>
-        <p>Helps in designing a vendor-supplier network with minimum transportation costs.</p>
+        <div class="sdg">
+            <strong>SDG 8: Decent Work and Economic Growth</strong>
+            <p><strong>Target 8.2:</strong> Achieve higher levels of economic productivity through diversification.</p>
+            <p><strong>Indicator 8.2.1:</strong> Annual growth rate of real GDP per employed person.</p>
+        </div>
 
-        <ul>
-            <li><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</li>
-            <li><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</li>
-        </ul>
+        <div class="sdg">
+            <strong>SDG 2: Zero Hunger</strong>
+            <p><strong>Target 2.4:</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
+            <p><strong>Indicator 2.4.1:</strong> Proportion of agricultural area under sustainable practices.</p>
+        </div>
+
+        <h3>Algorithm: Kruskal's Algorithm</h3>
+        <p>Helps design a vendor-supplier network with minimal transportation costs.</p>
+        <p><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</p>
+        <p><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</p>
 
         <code>
-#include &lt;iostream&gt;<br>
-#include &lt;vector&gt;<br>
-#include &lt;tuple&gt;<br>
-#include &lt;algorithm&gt;<br>
-using namespace std;<br>
-<br>
-class DisjointSet {<br>
-public:<br>
-    vector<int> parent, rank;<br>
-<br>
-    DisjointSet(int n) {<br>
-        parent.resize(n);<br>
-        rank.resize(n, 0);<br>
-        for (int i = 0; i < n; ++i) {<br>
-            parent[i] = i;<br>
-        }<br>
-    }<br>
-<br>
-    int find(int u) {<br>
-        if (u != parent[u]) {<br>
-            parent[u] = find(parent[u]);<br>
-        }<br>
-        return parent[u];<br>
-    }<br>
-<br>
-    void unionSets(int u, int v) {<br>
-        int rootU = find(u);<br>
-        int rootV = find(v);<br>
-        if (rootU != rootV) {<br>
-            if (rank[rootU] < rank[rootV]) {<br>
-                parent[rootU] = rootV;<br>
-            } else if (rank[rootU] > rank[rootV]) {<br>
-                parent[rootV] = rootU;<br>
-            } else {<br>
-                parent[rootV] = rootU;<br>
-                ++rank[rootU];<br>
-            }<br>
-        }<br>
-    }<br>
-};<br>
-<br>
-void kruskal(int vertices, vector<tuple<int, int, int>> &edges) {<br>
-    sort(edges.begin(), edges.end());<br>
-    DisjointSet ds(vertices);<br>
-    int cost = 0;<br>
-<br>
-    for (auto &[weight, u, v] : edges) {<br>
-        if (ds.find(u) != ds.find(v)) {<br>
-            ds.unionSets(u, v);<br>
-            cost += weight;<br>
-            cout << "Edge: " << u << " - " << v << " with cost: " << weight << endl;<br>
-        }<br>
-    }<br>
-<br>
-    cout << "Total cost of the minimum spanning tree: " << cost << endl;<br>
+#include <iostream>
+#include <vector>
+#include <tuple>
+#include <algorithm>
+using namespace std;
+
+class DisjointSet {
+public:
+    vector<int> parent, rank;
+
+    DisjointSet(int n) {
+        parent.resize(n);
+        rank.resize(n, 0);
+        for (int i = 0; i < n; ++i) {
+            parent[i] = i;
+        }
+    }
+
+    int find(int u) {
+        if (u != parent[u]) {
+            parent[u] = find(parent[u]);
+        }
+        return parent[u];
+    }
+
+    void unionSets(int u, int v) {
+        int rootU = find(u);
+        int rootV = find(v);
+        if (rootU != rootV) {
+            if (rank[rootU] < rank[rootV]) {
+                parent[rootU] = rootV;
+            } else if (rank[rootU] > rank[rootV]) {
+                parent[rootV] = rootU;
+            } else {
+                parent[rootV] = rootU;
+                ++rank[rootU];
+            }
+        }
+    }
+};
+
+void kruskal(int vertices, vector<tuple<int, int, int>>& edges) {
+    sort(edges.begin(), edges.end());
+    DisjointSet ds(vertices);
+    int cost = 0;
+
+    for (auto &[weight, u, v] : edges) {
+        if (ds.find(u) != ds.find(v)) {
+            ds.unionSets(u, v);
+            cost += weight;
+            cout << "Edge: " << u << " - " << v << " with cost: " << weight << endl;
+        }
+    }
+
+    cout << "Total cost of the minimum spanning tree: " << cost << endl;
 }
         </code>
     </div>
 
+    <!-- Business Case 3 -->
     <div class="section">
-        <h2>Customer Data and Preferences</h2>
-        <p><strong>SDG 4:</strong> Quality Education</p>
-        <p><strong>Target 4.3:</strong> Ensure equal access to affordable vocational education and skills development.</p>
-        <p><strong>Indicator 4.3.1:</strong> Participation rate in formal and informal skills training.</p>
-        <p><strong>SDG 12:</strong> Responsible Consumption and Production</p>
-        <p><strong>Target 12.6:</strong> Encourage companies to adopt sustainable practices.</p>
-        <p><strong>Indicator 12.6.1:</strong> Number of companies publishing sustainability reports.</p>
+        <h2>Business Case 3: Transportation and Logistics</h2>
+        <p>This project uses Dijkstra's Algorithm to optimize logistics and supply chain routes, ensuring efficient transportation of goods. By selecting the shortest paths in a weighted graph, it ensures timely and cost-effective delivery of raw materials or products between suppliers and restaurants.</p>
 
-        <p><strong>Algorithm:</strong> Quick Sort Algorithm</p>
-        <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
+        <div class="sdg">
+            <strong>SDG 9: Industry, Innovation, and Infrastructure</strong>
+            <p><strong>Target 9.1:</strong> Develop sustainable and resilient infrastructure.</p>
+            <p><strong>Indicator 9.1.2:</strong> Passenger and freight volumes by mode of transport.</p>
+        </div>
 
-        <ul>
-            <li><strong>Pivot Selection:</strong> Organizes data efficiently.</li>
-            <li><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</li>
-        </ul>
+        <div class="sdg">
+            <strong>SDG 12: Responsible Consumption and Production</strong>
+            <p><strong>Target 12.3:</strong> Halve per capita global food waste at the retail and consumer levels.</p>
+            <p><strong>Indicator 12.3.1:</strong> Food loss index and food waste index.</p>
+        </div>
+
+        <h3>Algorithm: Dijkstra's Algorithm</h3>
+        <p>Optimizes logistics and supply chain routes for efficient transportation.</p>
+        <p><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</p>
+        <p><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of products between suppliers and restaurants.</p>
 
         <code>
-#include &lt;iostream&gt;<br>
-using namespace std;<br>
-<br>
-int partition(int arr[], int low, int high) {<br>
-    int pivot = arr[high];<br>
-    int i = (low - 1);<br>
-<br>
-    for (int j = low; j <= high - 1; j++) {<br>
-        if (arr[j] < pivot) {<br>
-            i++;<br>
-            swap(arr[i], arr[j]);<br>
-        }<br>
-    }<br>
-    swap(arr[i + 1], arr[high]);<br>
-    return (i + 1);<br>
-}<br>
-<br>
-void quickSort(int arr[], int low, int high) {<br>
-    if (low < high) {<br>
-        int pi = partition(arr, low, high);<br>
-        quickSort(arr, low, pi - 1);<br>
-        quickSort(arr, pi + 1, high);<br>
-    }<br>
-}<br>
-<br>
-void printArray(int arr[], int size) {<br>
-    for (int i = 0; i < size; i++) {<br>
-        cout << arr[i] << " ";<br>
-    }<br>
-    cout << endl;<br>
-}<br>
-<br>
-int main() {<br>
-    int arr[] = {10, 7, 8, 9, 1, 5};<br>
-    int n = sizeof(arr) / sizeof(arr[0]);<br>
-    quickSort(arr, 0, n - 1);<br>
-    cout << "Sorted array: \n";<br>
-    printArray(arr, n);<br>
-    return 0;<br>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+using namespace std;
+
+void dijkstra(int nodes, vector<pair<int, int>> adj[], int start) {
+    vector<int> dist(nodes, INT_MAX);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+    dist[start] = 0;
+    pq.push({0, start});
+
+    while (!pq.empty()) {
+        int current_dist = pq.top().first;
+        int current_node = pq.top().second;
+        pq.pop();
+
+        for (auto neighbor : adj[current_node]) {
+            int next_node = neighbor.first;
+            int weight = neighbor.second;
+
+            if (current_dist + weight < dist[next_node]) {
+                dist[next_node] = current_dist + weight;
+                pq.push({dist[next_node], next_node});
+            }
+        }
+    }
+
+    cout << "Shortest distances from source " << start << ":\n";
+    for (int i = 0; i < nodes; ++i) {
+        cout << "To node " << i << " : " << dist[i] << endl;
+    }
 }
         </code>
     </div>
-</
+
+</div>
+
+</body>
+</html>
