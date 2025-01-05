@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Cases and SDGs</title>
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Link to External CSS -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <header>
         <h1>Business Cases and SDGs</h1>
     </header>
 
-    <!-- Customer Data and Preferences -->
-    <section>
-        <h2>Customer Data and Preferences</h2>
-
-        <h3>Quick Sort Algorithm:</h3>
-        <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
-        <ul>
-            <li><strong>Pivot Selection:</strong> Organizes data efficiently.</li>
-            <li><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</li>
-        </ul>
-
-        <h3>Quick Sort Code:</h3>
-        <pre><code class="cpp">
+    <div class="container">
+        <section class="section">
+            <h2>Customer Data and Preferences</h2>
+            <div class="sdg">
+                <strong>SDG 4: Quality Education</strong>
+                <p><strong>Target (based on SDG):</strong> Ensure equal access to affordable vocational education and skills development.</p>
+                <p><strong>Indicator:</strong> Participation rate in formal and informal skills training.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 12: Responsible Consumption and Production</strong>
+                <p><strong>Target (based on SDG):</strong> Encourage companies to adopt sustainable practices.</p>
+                <p><strong>Indicator:</strong> Number of companies publishing sustainability reports.</p>
+            </div>
+            <h3>Algorithm: Quick Sort Algorithm</h3>
+            <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
+            <p><strong>Design Structures:</strong></p>
+            <p><strong>Pivot Selection:</strong> Organizes data efficiently.</p>
+            <p><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</p>
+            <code>
 #include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
@@ -67,24 +79,28 @@ int main() {
     printArray(arr, n);
     return 0;
 }
-        </code></pre>
+            </code>
+            <button onclick="location.href='quick_sort.cpp'" class="download-btn">Download Quick Sort Code</button>
+        </section>
 
-        <button onclick="location.href='quick_sort.cpp'" class="download-btn">Download Quick Sort Code</button>
-    </section>
-
-    <!-- Kruskal's Algorithm -->
-    <section>
-        <h2>Supply Chain and Vendor Network</h2>
-
-        <h3>Kruskal's Algorithm:</h3>
-        <p>Helps in designing a vendor-supplier network with minimum transportation costs.</p>
-        <ul>
-            <li><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</li>
-            <li><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</li>
-        </ul>
-
-        <h3>Kruskal's Algorithm Code:</h3>
-        <pre><code class="cpp">
+        <section class="section">
+            <h2>Supply Chain and Vendor Network</h2>
+            <div class="sdg">
+                <strong>SDG 8: Decent Work and Economic Growth</strong>
+                <p><strong>Target (based on SDG):</strong> Achieve higher levels of economic productivity through diversification.</p>
+                <p><strong>Indicator:</strong> Annual growth rate of real GDP per employed person.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 2: Zero Hunger</strong>
+                <p><strong>Target (based on SDG):</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
+                <p><strong>Indicator:</strong> Proportion of agricultural area under sustainable practices.</p>
+            </div>
+            <h3>Algorithm: Kruskal's Algorithm</h3>
+            <p>Helps in designing a vendor-supplier network with minimum transportation costs.</p>
+            <p><strong>Design Structures:</strong></p>
+            <p><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</p>
+            <p><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</p>
+            <code>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;tuple&gt;
@@ -135,45 +151,34 @@ void kruskal(int vertices, vector&lt;tuple&lt;int, int, int&gt;&gt; &amp;edges) 
         if (ds.find(u) != ds.find(v)) {
             ds.unionSets(u, v);
             cost += weight;
-            cout &lt;&lt; "Edge: " &lt;&lt; u &lt;&lt; " - " &lt;&lt; v &lt;&lt; " with cost: " &lt;&lt; weight &lt;&lt; "&lt;br&gt;";
+            cout &lt;&lt; "Edge: " &lt;&lt; u &lt;&lt; " - " &lt;&lt; v &lt;&lt; " with cost: " &lt;&lt; weight &lt;&lt; endl;
         }
     }
 
-    cout &lt;&lt; "Total cost of the minimum spanning tree: " &lt;&lt; cost &lt;&lt; "&lt;br&gt;";
+    cout &lt;&lt; "Total cost of the minimum spanning tree: " &lt;&lt; cost &lt;&lt; endl;
 }
+            </code>
+            <button onclick="location.href='kruskal_algorithm.cpp'" class="download-btn">Download Kruskal's Algorithm Code</button>
+        </section>
 
-int main() {
-    vector&lt;tuple&lt;int, int, int&gt;&gt; edges = {
-        {10, 0, 1},
-        {15, 0, 2},
-        {20, 1, 2},
-        {25, 2, 3},
-        {30, 3, 4}
-    };
-
-    int vertices = 5;
-    kruskal(vertices, edges);
-
-    return 0;
-}
-        </code></pre>
-
-        <button onclick="location.href='kruskal.cpp'" class="download-btn">Download Kruskal's Algorithm Code</button>
-    </section>
-
-    <!-- Dijkstra's Algorithm -->
-    <section>
-        <h2>Transportation and Logistics</h2>
-
-        <h3>Dijkstra's Algorithm:</h3>
-        <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
-        <ul>
-            <li><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</li>
-            <li><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of raw materials or products between suppliers and restaurants.</li>
-        </ul>
-
-        <h3>Dijkstra's Algorithm Code:</h3>
-        <pre><code class="cpp">
+        <section class="section">
+            <h2>Transportation and Logistics</h2>
+            <div class="sdg">
+                <strong>SDG 9: Industry, Innovation, and Infrastructure</strong>
+                <p><strong>Target (based on SDG):</strong> Develop sustainable and resilient infrastructure.</p>
+                <p><strong>Indicator:</strong> Passenger and freight volumes by mode of transport.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 12: Responsible Consumption and Production</strong>
+                <p><strong>Target (based on SDG):</strong> Halve per capita global food waste at the retail and consumer levels.</p>
+                <p><strong>Indicator:</strong> Food loss index and food waste index.</p>
+            </div>
+            <h3>Algorithm: Dijkstra's Algorithm</h3>
+            <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
+            <p><strong>Design Structures:</strong></p>
+            <p><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</p>
+            <p><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of raw materials or products between suppliers and restaurants.</p>
+            <code>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
@@ -205,59 +210,18 @@ void dijkstra(int nodes, vector&lt;pair&lt;int, int&gt;&gt; adj[], int start) {
 
     cout &lt;&lt; "Shortest distances from source " &lt;&lt; start &lt;&lt; ":\n";
     for (int i = 0; i &lt; nodes; ++i) {
-        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " : " &lt;&lt; dist[i] &lt;&lt; "&lt;br&gt;";
+        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " : " &lt;&lt; dist[i] &lt;&lt; endl;
     }
 }
+            </code>
+            <button onclick="location.href='dijkstra_algorithm.cpp'" class="download-btn">Download Dijkstra's Algorithm Code</button>
+        </section>
+    </div>
 
-int main() {
-    int nodes = 5;  // Number of nodes (example)
-    vector&lt;pair&lt;int, int&gt;&gt; adj[nodes];
-
-    adj[0].push_back({1, 10});
-    adj[0].push_back({2, 20});
-    adj[1].push_back({0, 10});
-    adj[1].push_back({2, 30});
-    adj[2].push_back({0, 20});
-    adj[2].push_back({1, 30});
-    adj[2].push_back({3, 50});
-    adj[3].push_back({2, 50});
-    adj[3].push_back({4, 10});
-    adj[4].push_back({3, 10});
-
-    dijkstra(nodes, adj, 0);
-
-    return 0;
-}
-        </code></pre>
-
-        <button onclick="location.href='dijkstra.cpp'" class="download-btn">Download Dijkstra's Algorithm Code</button>
-    </section>
-
-    <!-- SDGs Section -->
-    <section>
-        <h2>SDGs Related to Algorithms:</h2>
-        
-        <!-- SDG 8: Decent Work and Economic Growth -->
-        <div class="sdg">
-            <h3>SDG 8: Decent Work and Economic Growth</h3>
-            <p><strong>Target 8.2:</strong> Achieve higher levels of economic productivity through diversification, technological upgrading, and innovation.</p>
-            <p><strong>Indicator:</strong> Labor productivity, by sex, age, occupation, and persons with disabilities.</p>
-        </div>
-
-        <!-- SDG 9: Industry, Innovation, and Infrastructure -->
-        <div class="sdg">
-            <h3>SDG 9: Industry, Innovation, and Infrastructure</h3>
-            <p><strong>Target 9.1:</strong> Develop sustainable and resilient infrastructure.</p>
-            <p><strong>Indicator:</strong> Passenger and freight volumes by mode of transport.</p>
-        </div>
-
-        <!-- SDG 12: Responsible Consumption and Production -->
-        <div class="sdg">
-            <h3>SDG 12: Responsible Consumption and Production</h3>
-            <p><strong>Target 12.3:</strong> Halve per capita global food waste at the retail and consumer levels.</p>
-            <p><strong>Indicator:</strong> Food loss index and food waste index.</p>
-        </div>
-    </section>
+    <footer>
+        <p>For more information, visit <a href="https://www.example.com">our website</a>.</p>
+    </footer>
 
 </body>
+
 </html>
