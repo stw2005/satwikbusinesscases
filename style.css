@@ -1,78 +1,87 @@
 /* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
+    background-color: #f8f9fa;
     color: #333;
 }
 
-/* Title */
-header h1 {
+header {
+    background: linear-gradient(to right, #ff5f6d, #ffc371); /* La La Land colors */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
     font-family: 'Pacifico', cursive;
     font-size: 3rem;
-    background: linear-gradient(to right, #FF4E50, #009FFF);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-align: center;
-    margin: 50px 0 20px;
 }
 
-/* Container */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
-/* Section */
 .section {
-    background-color: #fff;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    color: #333;
-    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    color: #555;
 }
 
-/* Code Blocks */
-.code-block {
-    background-color: #2b2b2b;
-    color: #fff;
+.sdg {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+pre.code-block {
+    background: #f4f4f9;
     padding: 15px;
-    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    overflow-x: auto;
+    border-radius: 5px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
-    line-height: 1.5;
-    overflow-x: auto;
 }
 
-/* Buttons */
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin: 30px 0;
+ul {
+    padding-left: 20px;
+}
+
+code {
+    color: #007bff;
 }
 
 button {
-    background: linear-gradient(to right, #FF4E50, #009FFF);
-    color: #fff;
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s ease;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    transition: transform 0.2s ease-in-out;
 }
 
 button:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
