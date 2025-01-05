@@ -3,53 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Business Cases and SDGs</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <h1>Business Cases and SDGs</h1>
     </header>
 
-    <div class="container">
-        <section class="section">
-            <h2>Customer Data and Preferences</h2>
-            <div class="sdgs">
-                <p><strong>SDG 4:</strong> Quality Education</p>
-                <p><strong>Target:</strong> Ensure equal access to affordable vocational education and skills development.</p>
-                <p><strong>Indicator:</strong> Participation rate in formal and informal skills training.</p>
-                <p><strong>SDG 12:</strong> Responsible Consumption and Production</p>
-                <p><strong>Target:</strong> Encourage companies to adopt sustainable practices.</p>
-                <p><strong>Indicator:</strong> Number of companies publishing sustainability reports.</p>
-            </div>
-            <h3>Algorithm: Quick Sort</h3>
-            <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
-            <div class="code-block">
-                <pre><code>#include &lt;iostream&gt;
-// Quick Sort Code Here
-</code></pre>
-                <a href="Customer_Data_and_Preferences.cpp" download="Customer_Data_and_Preferences.cpp">
-                    <button>Download Quick Sort Code</button>
-                </a>
-            </div>
-        </section>
+    <section>
+        <h2>Customer Data and Preferences</h2>
+        <h3>Quick Sort Algorithm:</h3>
+        <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
+        <ul>
+            <li><strong>Pivot Selection:</strong> Organizes data efficiently.</li>
+            <li><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</li>
+        </ul>
 
-        <section class="section">
-            <h2>Supply Chain and Vendor Network</h2>
-            <div class="sdgs">
-                <p><strong>SDG 8:</strong> Decent Work and Economic Growth</p>
-                <p><strong>Target:</strong> Achieve higher levels of economic productivity through diversification.</p>
-                <p><strong>Indicator:</strong> Annual growth rate of real GDP per employed person.</p>
-                <p><strong>SDG 2:</strong> Zero Hunger</p>
-                <p><strong>Target:</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
-                <p><strong>Indicator:</strong> Proportion of agricultural area under sustainable practices.</p>
-            </div>
-            <h3>Algorithm: Kruskal's Algorithm</h3>
-            <p>Helps in designing a vendor-supplier network with minimum transportation costs.</p>
-            <div class="code-block">
-                <pre><code>#include &lt;iostream&gt;
+        <h3>Quick Sort Code:</h3>
+        <pre><code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j &lt;= high - 1; j++) {
+        if (arr[j] &lt; pivot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low &lt; high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i &lt; size; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() {
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    quickSort(arr, 0, n - 1);
+    cout &lt;&lt; "Sorted array: &lt;br&gt;";
+    printArray(arr, n);
+    return 0;
+}
+        </code></pre>
+
+        <button onclick="location.href='quick_sort.cpp'" class="download-btn">Download Quick Sort Code</button>
+    </section>
+
+    <section>
+        <h2>Supply Chain and Vendor Network</h2>
+        <h3>Kruskal's Algorithm:</h3>
+        <p>Helps in designing a vendor-supplier network with minimum transportation costs.</p>
+        <ul>
+            <li><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</li>
+            <li><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</li>
+        </ul>
+
+        <h3>Kruskal's Algorithm Code:</h3>
+        <pre><code class="cpp">
+#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;tuple&gt;
 #include &lt;algorithm&gt;
@@ -90,7 +122,7 @@ public:
     }
 };
 
-void kruskal(int vertices, vector&lt;tuple&lt;int, int, int&gt;&gt; &edges) {
+void kruskal(int vertices, vector&lt;tuple&lt;int, int, int&gt;&gt; &amp;edges) {
     sort(edges.begin(), edges.end());
     DisjointSet ds(vertices);
     int cost = 0;
@@ -99,15 +131,14 @@ void kruskal(int vertices, vector&lt;tuple&lt;int, int, int&gt;&gt; &edges) {
         if (ds.find(u) != ds.find(v)) {
             ds.unionSets(u, v);
             cost += weight;
-            cout &lt;&lt; "Edge: " &lt;&lt; u &lt;&lt; " - " &lt;&lt; v &lt;&lt; " with cost: " &lt;&lt; weight &lt;&lt; endl;
+            cout &lt;&lt; "Edge: " &lt;&lt; u &lt;&lt; " - " &lt;&lt; v &lt;&lt; " with cost: " &lt;&lt; weight &lt;&lt; "&lt;br&gt;";
         }
     }
 
-    cout &lt;&lt; "Total cost of the minimum spanning tree: " &lt;&lt; cost &lt;&lt; endl;
+    cout &lt;&lt; "Total cost of the minimum spanning tree: " &lt;&lt; cost &lt;&lt; "&lt;br&gt;";
 }
 
 int main() {
-    // Example usage
     vector&lt;tuple&lt;int, int, int&gt;&gt; edges = {
         {10, 0, 1},
         {15, 0, 2},
@@ -116,48 +147,85 @@ int main() {
         {30, 3, 4}
     };
 
-    int vertices = 5; // Number of vertices
+    int vertices = 5;
     kruskal(vertices, edges);
 
     return 0;
 }
-</code></pre>
-                <a href="Supply_Chain_and_Vendor_Network.cpp" download="Supply_Chain_and_Vendor_Network.cpp">
-                    <button>Download Kruskal's Algorithm Code</button>
-                </a>
-            </div>
-        </section>
+        </code></pre>
 
-        <section class="section">
-            <h2>Transportation and Logistics</h2>
-            <div class="sdgs">
-                <p><strong>SDG 9:</strong> Industry, Innovation, and Infrastructure</p>
-                <p><strong>Target:</strong> Develop sustainable and resilient infrastructure.</p>
-                <p><strong>Indicator:</strong> Passenger and freight volumes by mode of transport.</p>
-                <p><strong>SDG 12:</strong> Responsible Consumption and Production</p>
-                <p><strong>Target:</strong> Halve per capita global food waste at the retail and consumer levels.</p>
-                <p><strong>Indicator:</strong> Food loss index and food waste index.</p>
-            </div>
-            <h3>Algorithm: Dijkstra's Algorithm</h3>
-            <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
-            <div class="code-block">
-                <pre><code>#include &lt;iostream&gt;
-// Dijkstra's Algorithm Code Here
-</code></pre>
-                <a href="Transportation_and_Logistics.cpp" download="Transportation_and_Logistics.cpp">
-                    <button>Download Dijkstra's Algorithm Code</button>
-                </a>
-            </div>
-        </section>
+        <button onclick="location.href='kruskal.cpp'" class="download-btn">Download Kruskal's Algorithm Code</button>
+    </section>
 
-        <!-- Download all the code as a zip file -->
-        <section class="section">
-            <h2>Download All Code</h2>
-            <a href="Algorithms_Code.zip" download="Algorithms_Code.zip">
-                <button>Download All Code</button>
-            </a>
-        </section>
-    </div>
+    <section>
+        <h2>Transportation and Logistics</h2>
+        <h3>Dijkstra's Algorithm:</h3>
+        <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
+        <ul>
+            <li><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</li>
+            <li><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of raw materials or products between suppliers and restaurants.</li>
+        </ul>
 
+        <h3>Dijkstra's Algorithm Code:</h3>
+        <pre><code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
+using namespace std;
+
+void dijkstra(int nodes, vector&lt;pair&lt;int, int&gt;&gt; adj[], int start) {
+    vector&lt;int&gt; dist(nodes, INT_MAX);
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;
+
+    dist[start] = 0;
+    pq.push({0, start});
+
+    while (!pq.empty()) {
+        int current_dist = pq.top().first;
+        int current_node = pq.top().second;
+        pq.pop();
+
+        for (auto neighbor : adj[current_node]) {
+            int next_node = neighbor.first;
+            int weight = neighbor.second;
+
+            if (current_dist + weight &lt; dist[next_node]) {
+                dist[next_node] = current_dist + weight;
+                pq.push({dist[next_node], next_node});
+            }
+        }
+    }
+
+    cout &lt;&lt; "Shortest distances from source " &lt;&lt; start &lt;&lt; ":\n";
+    for (int i = 0; i &lt; nodes; ++i) {
+        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " : " &lt;&lt; dist[i] &lt;&lt; "&lt;br&gt;";
+    }
+}
+
+int main() {
+    int nodes = 5;  // Number of nodes (example)
+    vector&lt;pair&lt;int, int&gt;&gt; adj[nodes];
+
+    adj[0].push_back({1, 10});
+    adj[0].push_back({2, 20});
+    adj[1].push_back({0, 10});
+    adj[1].push_back({2, 30});
+    adj[2].push_back({0, 20});
+    adj[2].push_back({1, 30});
+    adj[2].push_back({3, 50});
+    adj[3].push_back({2, 50});
+    adj[3].push_back({4, 10});
+    adj[4].push_back({3, 10});
+
+    dijkstra(nodes, adj, 0);
+
+    return 0;
+}
+        </code></pre>
+
+        <button onclick="location.href='dijkstra.cpp'" class="download-btn">Download Dijkstra's Algorithm Code</button>
+    </section>
+    
 </body>
 </html>
