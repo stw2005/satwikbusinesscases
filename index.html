@@ -1,93 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Cases and SDGs</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #333;
-        }
-        code {
-            display: block;
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            white-space: pre-wrap;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .sdg {
-            margin: 10px 0;
-        }
-        .sdg strong {
-            font-size: 1.1rem;
-        }
-    </style>
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-    <h1>Business Cases and SDGs</h1>
-</header>
+    <header>
+        <h1>Business Cases and SDGs</h1>
+    </header>
 
-<div class="container">
-
-    <!-- Business Case 1 -->
-    <div class="section">
-        <h2>Business Case 1: Customer Data and Preferences</h2>
-        <p>This project focuses on analyzing customer data to improve business decisions using the Quick Sort algorithm. It efficiently sorts customer information like preferences, feedback, and purchase history, enabling businesses to tailor their offerings to customer needs.</p>
-
-        <div class="sdg">
-            <strong>SDG 4: Quality Education</strong>
-            <p><strong>Target 4.3:</strong> Ensure equal access to affordable vocational education and skills development.</p>
-            <p><strong>Indicator 4.3.1:</strong> Participation rate in formal and informal skills training.</p>
-        </div>
-
-        <div class="sdg">
-            <strong>SDG 12: Responsible Consumption and Production</strong>
-            <p><strong>Target 12.6:</strong> Encourage companies to adopt sustainable practices.</p>
-            <p><strong>Indicator 12.6.1:</strong> Number of companies publishing sustainability reports.</p>
-        </div>
-
-        <h3>Algorithm: Quick Sort Algorithm</h3>
-        <p>Used to sort customer data for better decision-making.</p>
-        <p><strong>Pivot Selection:</strong> Organizes data efficiently.</p>
-        <p><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</p>
-
-        <code>
-#include <iostream>
+    <div class="container">
+        <section class="section">
+            <h2>Customer Data and Preferences</h2>
+            <div class="sdg">
+                <strong>SDG 4: Quality Education</strong>
+                <p><strong>Target (based on SDG):</strong> Ensure equal access to affordable vocational education and skills development.</p>
+                <p><strong>Indicator:</strong> Participation rate in formal and informal skills training.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 12: Responsible Consumption and Production</strong>
+                <p><strong>Target (based on SDG):</strong> Encourage companies to adopt sustainable practices.</p>
+                <p><strong>Indicator:</strong> Number of companies publishing sustainability reports.</p>
+            </div>
+            <h3>Algorithm: Quick Sort Algorithm</h3>
+            <p>Used to sort customer data, such as preferences, feedback, and purchase history, for better decision-making.</p>
+            <p><strong>Design Structures:</strong></p>
+            <p><strong>Pivot Selection:</strong> Organizes data efficiently.</p>
+            <p><strong>Divide and Conquer:</strong> Breaks data into smaller parts for quick sorting.</p>
+            <code>
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
 using namespace std;
 
 int partition(int arr[], int low, int high) {
     int pivot = arr[high];
     int i = (low - 1);
+
     for (int j = low; j <= high - 1; j++) {
-        if (arr[j] < pivot) {
+        if (arr[j] &lt; pivot) {
             i++;
             swap(arr[i], arr[j]);
         }
@@ -97,7 +57,7 @@ int partition(int arr[], int low, int high) {
 }
 
 void quickSort(int arr[], int low, int high) {
-    if (low < high) {
+    if (low &lt; high) {
         int pi = partition(arr, low, high);
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
@@ -105,60 +65,55 @@ void quickSort(int arr[], int low, int high) {
 }
 
 void printArray(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        cout << arr[i] << " ";
+    for (int i = 0; i &lt; size; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
     }
-    cout << endl;
+    cout &lt;&lt; endl;
 }
 
 int main() {
     int arr[] = {10, 7, 8, 9, 1, 5};
     int n = sizeof(arr) / sizeof(arr[0]);
     quickSort(arr, 0, n - 1);
-    cout << "Sorted array: \n";
+    cout &lt;&lt; "Sorted array: &lt;br&gt;";
     printArray(arr, n);
     return 0;
 }
-        </code>
-    </div>
+            </code>
+        </section>
 
-    <!-- Business Case 2 -->
-    <div class="section">
-        <h2>Business Case 2: Supply Chain and Vendor Network</h2>
-        <p>This project focuses on optimizing the vendor-supplier network using Kruskal's Algorithm to minimize transportation costs. By forming a minimum spanning tree, the algorithm connects suppliers and restaurants using minimal resources, ensuring no redundant connections and avoiding cycles.</p>
-
-        <div class="sdg">
-            <strong>SDG 8: Decent Work and Economic Growth</strong>
-            <p><strong>Target 8.2:</strong> Achieve higher levels of economic productivity through diversification.</p>
-            <p><strong>Indicator 8.2.1:</strong> Annual growth rate of real GDP per employed person.</p>
-        </div>
-
-        <div class="sdg">
-            <strong>SDG 2: Zero Hunger</strong>
-            <p><strong>Target 2.4:</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
-            <p><strong>Indicator 2.4.1:</strong> Proportion of agricultural area under sustainable practices.</p>
-        </div>
-
-        <h3>Algorithm: Kruskal's Algorithm</h3>
-        <p>Helps design a vendor-supplier network with minimal transportation costs.</p>
-        <p><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</p>
-        <p><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</p>
-
-        <code>
-#include <iostream>
-#include <vector>
-#include <tuple>
-#include <algorithm>
+        <section class="section">
+            <h2>Supply Chain and Vendor Network</h2>
+            <div class="sdg">
+                <strong>SDG 8: Decent Work and Economic Growth</strong>
+                <p><strong>Target (based on SDG):</strong> Achieve higher levels of economic productivity through diversification.</p>
+                <p><strong>Indicator:</strong> Annual growth rate of real GDP per employed person.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 2: Zero Hunger</strong>
+                <p><strong>Target (based on SDG):</strong> Ensure sustainable food production systems and resilient agricultural practices.</p>
+                <p><strong>Indicator:</strong> Proportion of agricultural area under sustainable practices.</p>
+            </div>
+            <h3>Algorithm: Kruskal's Algorithm</h3>
+            <p>Helps in designing a vendor-supplier network with minimum transportation costs.</p>
+            <p><strong>Design Structures:</strong></p>
+            <p><strong>Minimum Spanning Tree:</strong> Connects suppliers and restaurants using minimal resources.</p>
+            <p><strong>Union-Find:</strong> Ensures no redundant connections while avoiding cycles.</p>
+            <code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;tuple&gt;
+#include &lt;algorithm&gt;
 using namespace std;
 
 class DisjointSet {
 public:
-    vector<int> parent, rank;
+    vector&lt;int&gt; parent, rank;
 
     DisjointSet(int n) {
         parent.resize(n);
         rank.resize(n, 0);
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i &lt; n; ++i) {
             parent[i] = i;
         }
     }
@@ -174,9 +129,9 @@ public:
         int rootU = find(u);
         int rootV = find(v);
         if (rootU != rootV) {
-            if (rank[rootU] < rank[rootV]) {
+            if (rank[rootU] &lt; rank[rootV]) {
                 parent[rootU] = rootV;
-            } else if (rank[rootU] > rank[rootV]) {
+            } else if (rank[rootU] &gt; rank[rootV]) {
                 parent[rootV] = rootU;
             } else {
                 parent[rootV] = rootU;
@@ -186,7 +141,7 @@ public:
     }
 };
 
-void kruskal(int vertices, vector<tuple<int, int, int>>& edges) {
+void kruskal(int vertices, vector&lt;tuple&lt;int, int, int&gt;&gt; &amp;edges) {
     sort(edges.begin(), edges.end());
     DisjointSet ds(vertices);
     int cost = 0;
@@ -195,47 +150,42 @@ void kruskal(int vertices, vector<tuple<int, int, int>>& edges) {
         if (ds.find(u) != ds.find(v)) {
             ds.unionSets(u, v);
             cost += weight;
-            cout << "Edge: " << u << " - " << v << " with cost: " << weight << endl;
+            cout &lt;&lt; "Edge: " &lt;&lt; u &lt;&lt; " - " &lt;&lt; v &lt;&lt; " with cost: " &lt;&lt; weight &lt;&lt; endl;
         }
     }
 
-    cout << "Total cost of the minimum spanning tree: " << cost << endl;
+    cout &lt;&lt; "Total cost of the minimum spanning tree: " &lt;&lt; cost &lt;&lt; endl;
 }
-        </code>
-    </div>
+            </code>
+        </section>
 
-    <!-- Business Case 3 -->
-    <div class="section">
-        <h2>Business Case 3: Transportation and Logistics</h2>
-        <p>This project uses Dijkstra's Algorithm to optimize logistics and supply chain routes, ensuring efficient transportation of goods. By selecting the shortest paths in a weighted graph, it ensures timely and cost-effective delivery of raw materials or products between suppliers and restaurants.</p>
-
-        <div class="sdg">
-            <strong>SDG 9: Industry, Innovation, and Infrastructure</strong>
-            <p><strong>Target 9.1:</strong> Develop sustainable and resilient infrastructure.</p>
-            <p><strong>Indicator 9.1.2:</strong> Passenger and freight volumes by mode of transport.</p>
-        </div>
-
-        <div class="sdg">
-            <strong>SDG 12: Responsible Consumption and Production</strong>
-            <p><strong>Target 12.3:</strong> Halve per capita global food waste at the retail and consumer levels.</p>
-            <p><strong>Indicator 12.3.1:</strong> Food loss index and food waste index.</p>
-        </div>
-
-        <h3>Algorithm: Dijkstra's Algorithm</h3>
-        <p>Optimizes logistics and supply chain routes for efficient transportation.</p>
-        <p><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</p>
-        <p><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of products between suppliers and restaurants.</p>
-
-        <code>
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <climits>
+        <section class="section">
+            <h2>Transportation and Logistics</h2>
+            <div class="sdg">
+                <strong>SDG 9: Industry, Innovation, and Infrastructure</strong>
+                <p><strong>Target (based on SDG):</strong> Develop sustainable and resilient infrastructure.</p>
+                <p><strong>Indicator:</strong> Passenger and freight volumes by mode of transport.</p>
+            </div>
+            <div class="sdg">
+                <strong>SDG 12: Responsible Consumption and Production</strong>
+                <p><strong>Target (based on SDG):</strong> Halve per capita global food waste at the retail and consumer levels.</p>
+                <p><strong>Indicator:</strong> Food loss index and food waste index.</p>
+            </div>
+            <h3>Algorithm: Dijkstra's Algorithm</h3>
+            <p>Used to optimize logistics and supply chain routes for efficient transportation of goods.</p>
+            <p><strong>Design Structures:</strong></p>
+            <p><strong>Greedy Approach:</strong> Selects the shortest path in a weighted graph.</p>
+            <p><strong>Shortest Path:</strong> Ensures cost-effective and timely delivery of raw materials or products between suppliers and restaurants.</p>
+            <code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
 using namespace std;
 
-void dijkstra(int nodes, vector<pair<int, int>> adj[], int start) {
-    vector<int> dist(nodes, INT_MAX);
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+void dijkstra(int nodes, vector&lt;pair&lt;int, int&gt;&gt; adj[], int start) {
+    vector&lt;int&gt; dist(nodes, INT_MAX);
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;
 
     dist[start] = 0;
     pq.push({0, start});
@@ -249,22 +199,26 @@ void dijkstra(int nodes, vector<pair<int, int>> adj[], int start) {
             int next_node = neighbor.first;
             int weight = neighbor.second;
 
-            if (current_dist + weight < dist[next_node]) {
+            if (current_dist + weight &lt; dist[next_node]) {
                 dist[next_node] = current_dist + weight;
                 pq.push({dist[next_node], next_node});
             }
         }
     }
 
-    cout << "Shortest distances from source " << start << ":\n";
-    for (int i = 0; i < nodes; ++i) {
-        cout << "To node " << i << " : " << dist[i] << endl;
+    cout &lt;&lt; "Shortest distances from source " &lt;&lt; start &lt;&lt; ":\n";
+    for (int i = 0; i &lt; nodes; ++i) {
+        cout &lt;&lt; "To node " &lt;&lt; i &lt;&lt; " : " &lt;&lt; dist[i] &lt;&lt; endl;
     }
 }
-        </code>
+            </code>
+        </section>
     </div>
 
-</div>
+    <footer>
+        <p>For more information, visit <a href="https://www.example.com">our website</a>.</p>
+    </footer>
 
 </body>
+
 </html>
