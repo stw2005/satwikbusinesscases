@@ -57,15 +57,16 @@ footer a {
 }
 
 /* Code Styling */
-code {
-    background-color: #ecf0f1;
-    padding: 10px;
+pre {
+    background-color: #333;
+    color: white;
+    padding: 15px;
     border-radius: 5px;
-    display: block;
+    font-size: 1rem;
     white-space: pre-wrap;
     word-wrap: break-word;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    overflow-x: auto;
 }
 
 /* Download Button Styling */
@@ -90,7 +91,4 @@ code {
     background-color: #1c6ba0;
 }
 
-
-    text-decoration: none;
-}
 
